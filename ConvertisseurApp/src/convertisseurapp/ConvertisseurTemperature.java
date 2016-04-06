@@ -23,7 +23,7 @@ public class ConvertisseurTemperature extends Convertisseur implements
             resultat=Float.parseFloat(this.montant)*9/5+32;
         this.conversion=Float.toString(resultat);
         }catch(NumberFormatException nfe){
-            System.out.println("Boloss tu t'es trompé dans ce que t'as écris. Voila ton ereur:  "+nfe);
+            System.out.println("Error detected:  "+nfe);
             throw new ErrorSaisieException(this.montant);
         }
     }

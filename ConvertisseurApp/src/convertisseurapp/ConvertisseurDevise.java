@@ -48,7 +48,7 @@ public class ConvertisseurDevise extends Convertisseur implements
         this.conversion=Float.toString(resultat);
         
         }catch(NumberFormatException nfe){
-            System.out.println("Boloss tu t'es trompé dans ce que t'as écris. Voila ton ereur:  "+nfe);
+            System.out.println("Error detected:  "+nfe);
             throw new ErrorSaisieException(this.montant);
             
         }
