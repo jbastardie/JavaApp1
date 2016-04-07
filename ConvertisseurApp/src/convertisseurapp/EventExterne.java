@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
  *
  * @author yannc
  */
+//class gerant l'action des boutons de l'interface graphique
 public class EventExterne implements ActionListener {
 
     private ConvertisseurFrame ihm;
@@ -51,7 +52,7 @@ public class EventExterne implements ActionListener {
                 break;
             case "btn_far":
                 try {
-                    ihm._lb_info_temp.setText("Convertion en Farenheit");
+                    ihm._lb_info_temp.setText("Convertion en °F");
                     InterfaceConvertisseur conv3 = new ConvertisseurTemperature(Convertisseur.CELCIUS,
                             Convertisseur.FAHRENHEIT, ihm._tf_temp.getText());
                     ihm._lb_result_temp.setText(conv3.getConversion());
@@ -63,7 +64,7 @@ public class EventExterne implements ActionListener {
                 break;
             case "btn_cel":
                 try {
-                    ihm._lb_info_temp.setText("Convertion en Celsius");
+                    ihm._lb_info_temp.setText("Convertion en °C");
                     InterfaceConvertisseur conv4 = new ConvertisseurTemperature(Convertisseur.FAHRENHEIT,
                             Convertisseur.CELCIUS, ihm._tf_temp.getText());
                     ihm._lb_result_temp.setText(conv4.getConversion());

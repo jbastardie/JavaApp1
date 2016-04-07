@@ -11,11 +11,12 @@ import java.awt.*;
  *
  * @author yannc
  */
+//class de notre interface
 public class ConvertisseurFrame extends Frame{
     Button _bt_eur= new Button("€ vers $");
     Button _bt_usd= new Button("$ vers €");
-    Button _bt_far= new Button("C° vers F°");
-    Button _bt_cel= new Button("F°vers C°");
+    Button _bt_far= new Button("°C vers °F");
+    Button _bt_cel= new Button("°F vers °C");
     Label _lb_main_title= new Label("Convertisseur");
     Label _lb_info_devise= new Label("Appuyer sur une devise");
     Label _lb_info_temp= new Label("Appuyer sur une température");

@@ -9,6 +9,7 @@ package convertisseurapp;
  *
  * @author yannc
  */
+//class de notre error custom
 public class ErrorSaisieException extends NumberFormatException {
     public ErrorSaisieException(String s){
         super("Value is "+s);
