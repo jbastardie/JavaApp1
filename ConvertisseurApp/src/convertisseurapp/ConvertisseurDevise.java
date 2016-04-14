@@ -25,10 +25,10 @@ public class ConvertisseurDevise extends ModelConvertisseur implements
         *  de référence est aussi possible.
          */
         tx = new HashMap<>();
-        tx.put(Convertisseur.DOLLARUS + Convertisseur.DOLLARUS, new Float(1));
-        tx.put(Convertisseur.EURO + Convertisseur.EURO, new Float(1));
-        tx.put(Convertisseur.DOLLARUS + Convertisseur.EURO, new Float(0.87));
-        tx.put(Convertisseur.EURO + Convertisseur.DOLLARUS, new Float(1.13));
+        tx.put(ModelConvertisseur.DOLLARUS + ModelConvertisseur.DOLLARUS, new Float(1));
+        tx.put(ModelConvertisseur.EURO + ModelConvertisseur.EURO, new Float(1));
+        tx.put(ModelConvertisseur.DOLLARUS + ModelConvertisseur.EURO, new Float(0.87));
+        tx.put(ModelConvertisseur.EURO + ModelConvertisseur.DOLLARUS, new Float(1.13));
 
         /* Lorsque les attributs de classe sont initialisés on exécute la 
         *  conversion

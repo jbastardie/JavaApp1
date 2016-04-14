@@ -15,10 +15,10 @@ public class ConvertisseurTemperature extends ModelConvertisseur implements
         try {
             float resultat = 0;
             String sens = this.source + this.cible;
-            if (sens.matches(Convertisseur.FAHRENHEIT + Convertisseur.CELCIUS)) {
+            if (sens.matches(ModelConvertisseur.FAHRENHEIT + ModelConvertisseur.CELCIUS)) {
                 resultat = (Float.parseFloat(this.montant) - 32) * 5 / 9;
             }
-            if (sens.matches(Convertisseur.CELCIUS + Convertisseur.FAHRENHEIT)) {
+            if (sens.matches(ModelConvertisseur.CELCIUS + ModelConvertisseur.FAHRENHEIT)) {
                 resultat = Float.parseFloat(this.montant) * 9 / 5 + 32;
             }
             this.conversion = Float.toString(resultat);
