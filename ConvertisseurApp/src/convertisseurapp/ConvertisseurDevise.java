@@ -7,17 +7,17 @@ import java.util.HashMap;
  *
  * @author Bruno
  */
-public class ConvertisseurDevise extends Convertisseur implements
+public class ConvertisseurDevise extends ModelConvertisseur implements
         InterfaceConvertisseur {
 
     Map<String, Float> tx;
 
-    public ConvertisseurDevise(String s, String c, String m) {
+    public ConvertisseurDevise() {
 
         /* Initialisation des paramètres de conversion
         *  Appel au constructeur de la classe mère "super"
          */
-        super(s, c, m);
+       // super(s, c, m);
 
         /* Initialisation du référentiel des taux. Ce dernier peut être
         *  construit via une source externe (Base de données, fichier XML).
@@ -33,7 +33,6 @@ public class ConvertisseurDevise extends Convertisseur implements
         /* Lorsque les attributs de classe sont initialisés on exécute la 
         *  conversion
          */
-        this.convertir();
     }
 
     private void convertir() throws ErrorSaisieException {

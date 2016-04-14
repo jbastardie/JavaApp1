@@ -4,12 +4,11 @@ package convertisseurapp;
  *
  * @author Bruno
  */
-public class ConvertisseurTemperature extends Convertisseur implements
+public class ConvertisseurTemperature extends ModelConvertisseur implements
         InterfaceConvertisseur {
 
-    public ConvertisseurTemperature(String s, String c, String m) {
-        super(s, c, m);
-        this.convertir();
+    public ConvertisseurTemperature() {
+
     }
 
     private void convertir() throws ErrorSaisieException {

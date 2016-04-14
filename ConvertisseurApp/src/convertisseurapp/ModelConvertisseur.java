@@ -19,7 +19,6 @@ public class ModelConvertisseur implements InterfaceConvertisseur{
     public static String CELCIUS="C";
     public static String FAHRENHEIT="F";
     
-    
     protected String source;
     protected String cible;
     protected String montant;
@@ -29,23 +28,17 @@ public class ModelConvertisseur implements InterfaceConvertisseur{
         super();
     }
     
-    public ModelConvertisseur(String s, String c, String m){
-        source=s;
-        cible=c;
-        montant=m;
-    }
     
     public void setSource(String s)throws ErrorSaisieException{
 
         source=s;
-        conversionUpdate();
+        
 
     }
     
     public void setCible(String c)throws ErrorSaisieException{
 
         cible=c;
-        conversionUpdate();
 
     }
     
@@ -56,7 +49,9 @@ public class ModelConvertisseur implements InterfaceConvertisseur{
        
     }
     
-    public String getConversion(){
+    public String getConversion(String value){
+        montant=value;
+        conversionUpdate();
         return conversion;
     }
     
