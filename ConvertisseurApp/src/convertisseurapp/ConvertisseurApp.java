@@ -13,7 +13,7 @@ public class ConvertisseurApp {
     public static void main(String[] args) {
         //ConvertisseurFrame my_frame = new ConvertisseurFrame();
         InterfaceConvertisseur model = new ModelConvertisseur();
-        Interf view = new UIConvertisseur();
+        InterfaceView view = new UIConvertisseur();
         ControllerConvertisseur controller = new ControllerConvertisseur(model, view);
     }    
 }
