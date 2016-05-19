@@ -16,4 +16,5 @@ public interface InterfaceView {
     public void updateUI(Map<String, String> dict);
     public String getDevise();
     public String getTemperature();
+    public void showpopup(String error_message);
 }

@@ -1,5 +1,7 @@
 package convertisseurapp;
 
+import java.util.Properties;
+
 /**
  *
  * @author Bruno
@@ -7,8 +9,8 @@ package convertisseurapp;
 public class ConvertisseurTemperature extends ModelConvertisseur implements
         InterfaceConvertisseur {
 
-    public ConvertisseurTemperature() {
-
+    public ConvertisseurTemperature(Properties prop) {
+        
     }
 
     private void convertir() throws ErrorSaisieException {
@@ -23,7 +25,6 @@ public class ConvertisseurTemperature extends ModelConvertisseur implements
             }
             this.conversion = Float.toString(resultat);
         } catch (NumberFormatException nfe) {
-            System.out.println("Error detected:  " + nfe);
             throw new ErrorSaisieException(this.montant);
         }
     }

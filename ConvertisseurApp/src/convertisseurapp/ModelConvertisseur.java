@@ -5,6 +5,11 @@
  */
 package convertisseurapp;
 
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Properties;
+
 /**
  *
  * @author Jeremy
@@ -24,6 +29,9 @@ public class ModelConvertisseur implements InterfaceConvertisseur{
     protected String montant;
     protected String conversion;
     
+    protected Properties properties;
+    protected DataBase dataBase = new DataBase();
+    
     public ModelConvertisseur(){
         super();
     }
@@ -42,21 +50,37 @@ public class ModelConvertisseur implements InterfaceConvertisseur{
 
     }
     
-    public void setMontant(String m)throws ErrorSaisieException{
+    public void setMontant(String m)throws ErrorSaisieException, ErrorConnectDB{
         
         montant=m;
         conversionUpdate();
        
     }
     
-    public String getConversion(String value){
+    public String getConversion(String value) throws ErrorConnectDB{
         montant=value;
         conversionUpdate();
         return conversion;
     }
     
-    protected void conversionUpdate()throws ErrorSaisieException{
+    protected void conversionUpdate()throws ErrorSaisieException, ErrorConnectDB{
         conversion="";
+    }
+    
+    public Map<String, Float> getHashMap(Properties properties) throws ErrorConnectDB{
+        Map<String, Float> tx =new HashMap<>();
+           dataBase.connectDB(properties);
+        try{
+        tx = dataBase.getHashMap();
+        }catch(SQLException ex){
+           throw new ErrorConnectDB();
+        }
+        try{
+            dataBase.closeDB();
+        }catch(SQLException ex){
+            throw new ErrorConnectDB();
+        }
+        return tx;
     }
     
 }

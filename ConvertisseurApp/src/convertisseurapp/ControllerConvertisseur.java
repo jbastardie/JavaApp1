@@ -22,8 +22,8 @@ public class ControllerConvertisseur implements ActionListener {
     private InterfaceConvertisseur _mc_model;
     private Iterator<InterfaceConvertisseur> it;
     private Map<String, String> dict = new HashMap<>();
-    private InterfaceConvertisseur localClassDevise = new ConvertisseurDevise();
-    private InterfaceConvertisseur localClassTemp = new ConvertisseurTemperature();
+    private InterfaceConvertisseur localClassDevise;
+    private InterfaceConvertisseur localClassTemp;
     private ArrayList<InterfaceConvertisseur> model;
 
     public ControllerConvertisseur(ArrayList<InterfaceConvertisseur> model, InterfaceView view) {
@@ -42,49 +42,56 @@ public class ControllerConvertisseur implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         it = model.iterator();
-        switch (e.getActionCommand()) {
-            case "btn_eur":
-                try {
-                    while (it.hasNext()) {
-                        localClassDevise = it.next();
-                        if (localClassDevise instanceof ConvertisseurDevise) {
-                            _mc_model = localClassDevise;
+                    switch (e.getActionCommand()) {
+                        case "btn_eur":
+                            try {
+                                //localClassDevise = new ConvertisseurDevise();
+                                while (it.hasNext()) {
+                                    localClassDevise = it.next();
+                                    if (localClassDevise instanceof ConvertisseurDevise) {
+                                        _mc_model = localClassDevise;
+                                        break;
+                                    }
+                                }
+                                _mc_model.setCible(ModelConvertisseur.DOLLARUS);
+                                _mc_model.setSource(ModelConvertisseur.EURO);
+                                dict.put("_lb_result_devise", _mc_model.getConversion(_uic_view.getDevise()));
+                                dict.put("_lb_info_devise", "Convertion en Dollars");
+                            } catch (ErrorSaisieException ese) {
+                                dict.put("_lb_info_devise", "La devise saisie n'est pas correcte");
+                                dict.put("_lb_result_devise","");
+                            } catch(ErrorConnectDB ecdb){
+                                 dict.put("_lb_info_devise", "Erreur de connexion");
+                                dict.put("_lb_result_devise","");
+                            }finally {
+                                _uic_view.updateUI(dict);
+                            }
                             break;
-                        }
-                    }
-                    _mc_model.setCible(ModelConvertisseur.DOLLARUS);
-                    _mc_model.setSource(ModelConvertisseur.EURO);
-                    dict.put("_lb_result_devise", _mc_model.getConversion(_uic_view.getDevise()));
-                    dict.put("_lb_info_devise", "Convertion en Dollars");
-                } catch (ErrorSaisieException ese) {
-                    dict.put("_lb_info_devise", "La devise saisie n'est pas correcte");
-                    dict.put("_lb_result_devise","");
-                } finally {
-                    _uic_view.updateUI(dict);
-                }
-                break;
-            case "btn_usd":
-                try {
-                    while (it.hasNext()) {
-                        localClassDevise = it.next();
-                        if (localClassDevise instanceof ConvertisseurDevise) {
-                            _mc_model = localClassDevise;
+                        case "btn_usd":
+                            try {
+                                while (it.hasNext()) {
+                                    localClassDevise = it.next();
+                                    if (localClassDevise instanceof ConvertisseurDevise) {
+                                        _mc_model = localClassDevise;
+                                        break;
+                                    }
+                                }
+                                _mc_model.setCible(ModelConvertisseur.EURO);
+                                _mc_model.setSource(ModelConvertisseur.DOLLARUS);
+                                dict.put("_lb_result_devise", _mc_model.getConversion(_uic_view.getDevise()));
+                                dict.put("_lb_info_devise", "Convertion en Euro");
+                            } catch (ErrorSaisieException ese) {
+                                dict.put("_lb_info_devise", "La devise saisie n'est pas correcte");
+                                dict.put("_lb_result_devise","");
+                            }  catch(ErrorConnectDB ecdb){
+                                 dict.put("_lb_info_devise", "Erreur de connexion");
+                                dict.put("_lb_result_devise","");
+                            }finally {
+                                _uic_view.updateUI(dict);
+                            }
                             break;
-                        }
-                    }
-                    _mc_model.setCible(ModelConvertisseur.EURO);
-                    _mc_model.setSource(ModelConvertisseur.DOLLARUS);
-                    dict.put("_lb_result_devise", _mc_model.getConversion(_uic_view.getDevise()));
-                    dict.put("_lb_info_devise", "Convertion en Euro");
-                } catch (ErrorSaisieException ese) {
-                    dict.put("_lb_info_devise", "La devise saisie n'est pas correcte");
-                    dict.put("_lb_result_devise","");
-                } finally {
-                    _uic_view.updateUI(dict);
-                }
-                break;
-            case "btn_far":
-                try {
+                        case "btn_far":
+                            try {
                     while (it.hasNext()) {
                         localClassTemp = it.next();
                         if (localClassTemp instanceof ConvertisseurTemperature) {
@@ -99,7 +106,10 @@ public class ControllerConvertisseur implements ActionListener {
                 } catch (ErrorSaisieException ese) {
                     dict.put("_lb_info_temp", "La temperature saisie n'est pas correcte");
                     dict.put("_lb_result_temp","");
-                } finally {
+                }  catch(ErrorConnectDB ecdb){
+                                 dict.put("_lb_info_devise", "Erreur de connexion");
+                                dict.put("_lb_result_devise","");
+                            }finally {
                     _uic_view.updateUI(dict);
                 }
                 break;
@@ -119,7 +129,10 @@ public class ControllerConvertisseur implements ActionListener {
                 } catch (ErrorSaisieException ese) {
                     dict.put("_lb_info_temp", "La temperature saisie n'est pas correcte");
                     dict.put("_lb_result_temp","");
-                } finally {
+                } catch(ErrorConnectDB ecdb){
+                                 dict.put("_lb_info_devise", "Erreur de connexion");
+                                dict.put("_lb_result_devise","");
+                            }finally {
                     _uic_view.updateUI(dict);
                 }
                 break;

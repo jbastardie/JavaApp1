@@ -91,4 +91,15 @@ public class UIConvertisseur extends Frame implements InterfaceView {
     public String getTemperature() {
         return _tf_temp.getText();
     }
+    
+    public void showpopup(String error_message){
+        Frame popupframe = new Frame();
+        popupframe.setLayout(new BorderLayout());
+        Panel errorpanel = new Panel();
+        Label erro_label = new Label(error_message);
+        errorpanel.add(erro_label);
+        popupframe.add(errorpanel);
+        popupframe.pack();
+        popupframe.setVisible(true);
+    }
 }
